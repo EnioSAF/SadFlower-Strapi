@@ -437,6 +437,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       }>;
     slug: Attribute.String &
       Attribute.Required &
+      Attribute.Unique &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
