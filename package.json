@@ -13,7 +13,7 @@
     "@offset-dev/strapi-calendar": "^0.0.10",
     "@strapi/plugin-i18n": "^4.14.3",
     "@strapi/plugin-users-permissions": "4.14.3",
-    "@strapi/strapi": "4.14.4",
+    "@strapi/strapi": "4.15.0",
     "better-sqlite3": "8.6.0",
     "strapi": "^3.6.11",
     "strapi-plugin-ezforms": "^0.1.5",
