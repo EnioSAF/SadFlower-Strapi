@@ -15,6 +15,8 @@
     "@strapi/plugin-users-permissions": "4.14.3",
     "@strapi/strapi": "4.15.0",
     "better-sqlite3": "8.6.0",
+    "pg": "^8.11.3",
+    "pg-connection-string": "^2.6.2",
     "strapi": "^3.6.11",
     "strapi-plugin-ezforms": "^0.1.5",
     "strapi-plugin-import-export-entries": "^1.21.1"
