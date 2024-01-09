@@ -1,10 +1,4 @@
 module.exports = ({ env }) => ({
-  'import-export-entries': {
-    enabled: true,
-  },
-  'drag-drop-content-types': {
-    enabled: true,
-  },
   upload: {
     config: {
       provider: 'aws-s3',
