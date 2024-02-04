@@ -390,7 +390,9 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         maxLength: 255;
       }>;
-    Category: Attribute.Enumeration<['LifeStyle', 'Art', 'Music', 'Digital']> &
+    Category: Attribute.Enumeration<
+      ['News', 'Projects', 'Gaming', 'Art', 'Music']
+    > &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {

@@ -35,10 +35,11 @@
       },
       "type": "enumeration",
       "enum": [
-        "LifeStyle",
+        "News",
+        "Projects",
+        "Gaming",
         "Art",
-        "Music",
-        "Digital"
+        "Music"
       ],
       "required": true
     },
