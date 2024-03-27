@@ -71,6 +71,12 @@
     },
     "avatar": {
       "type": "json"
+    },
+    "sad_gotchu": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::sad-gotchu.sad-gotchu",
+      "mappedBy": "users_permissions_user"
     }
   }
 }

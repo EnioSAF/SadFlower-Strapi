@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sad_gotchus",
+  "info": {
+    "singularName": "sad-gotchu",
+    "pluralName": "sad-gotchus",
+    "displayName": "SadGotchu"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "stage": {
+      "type": "string"
+    },
+    "age": {
+      "type": "biginteger"
+    },
+    "evolutionLine": {
+      "type": "string"
+    },
+    "hunger": {
+      "type": "biginteger"
+    },
+    "hapiness": {
+      "type": "biginteger"
+    },
+    "timeAtHundredHunger": {
+      "type": "biginteger"
+    },
+    "timeAtZeroHapiness": {
+      "type": "biginteger"
+    },
+    "isSleeping": {
+      "type": "boolean"
+    },
+    "isFinalStage": {
+      "type": "boolean"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "sad_gotchu"
+    }
+  }
+}

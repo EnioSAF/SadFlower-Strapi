@@ -471,6 +471,49 @@ export interface ApiBlogBlog extends Schema.CollectionType {
   };
 }
 
+export interface ApiSadGotchuSadGotchu extends Schema.CollectionType {
+  collectionName: 'sad_gotchus';
+  info: {
+    singularName: 'sad-gotchu';
+    pluralName: 'sad-gotchus';
+    displayName: 'SadGotchu';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    stage: Attribute.String;
+    age: Attribute.BigInteger;
+    evolutionLine: Attribute.String;
+    hunger: Attribute.BigInteger;
+    hapiness: Attribute.BigInteger;
+    timeAtHundredHunger: Attribute.BigInteger;
+    timeAtZeroHapiness: Attribute.BigInteger;
+    isSleeping: Attribute.Boolean;
+    isFinalStage: Attribute.Boolean;
+    users_permissions_user: Attribute.Relation<
+      'api::sad-gotchu.sad-gotchu',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::sad-gotchu.sad-gotchu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::sad-gotchu.sad-gotchu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -861,6 +904,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     >;
     about: Attribute.Blocks;
     avatar: Attribute.JSON;
+    sad_gotchu: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::sad-gotchu.sad-gotchu'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -993,6 +1041,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::blog.blog': ApiBlogBlog;
+      'api::sad-gotchu.sad-gotchu': ApiSadGotchuSadGotchu;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
