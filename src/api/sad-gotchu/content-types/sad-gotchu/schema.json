@@ -4,7 +4,8 @@
   "info": {
     "singularName": "sad-gotchu",
     "pluralName": "sad-gotchus",
-    "displayName": "SadGotchu"
+    "displayName": "SadGotchu",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -43,6 +44,9 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "sad_gotchu"
+    },
+    "name": {
+      "type": "string"
     }
   }
 }

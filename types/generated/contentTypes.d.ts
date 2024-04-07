@@ -477,6 +477,7 @@ export interface ApiSadGotchuSadGotchu extends Schema.CollectionType {
     singularName: 'sad-gotchu';
     pluralName: 'sad-gotchus';
     displayName: 'SadGotchu';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -496,6 +497,7 @@ export interface ApiSadGotchuSadGotchu extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    name: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
