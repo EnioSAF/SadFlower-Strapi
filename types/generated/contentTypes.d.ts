@@ -483,7 +483,7 @@ export interface ApiSadGotchuSadGotchu extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    stage: Attribute.String;
+    name: Attribute.String;
     age: Attribute.BigInteger;
     evolutionLine: Attribute.String;
     hunger: Attribute.BigInteger;
@@ -497,7 +497,7 @@ export interface ApiSadGotchuSadGotchu extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
-    name: Attribute.String;
+    stage: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "stage": {
+    "name": {
       "type": "string"
     },
     "age": {
@@ -45,7 +45,7 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "sad_gotchu"
     },
-    "name": {
+    "stage": {
       "type": "string"
     }
   }
