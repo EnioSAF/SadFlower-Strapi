@@ -24,13 +24,13 @@
     "hunger": {
       "type": "biginteger"
     },
-    "hapiness": {
+    "happiness": {
       "type": "biginteger"
     },
     "timeAtHundredHunger": {
       "type": "biginteger"
     },
-    "timeAtZeroHapiness": {
+    "timeAtZeroHappiness": {
       "type": "biginteger"
     },
     "isSleeping": {
