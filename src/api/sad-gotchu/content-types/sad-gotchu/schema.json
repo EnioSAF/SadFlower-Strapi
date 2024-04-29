@@ -48,8 +48,8 @@
     "stage": {
       "type": "string"
     },
-    "ageprogress": {
-      "type": "float"
+    "lastInteractionTime": {
+      "type": "biginteger"
     }
   }
 }

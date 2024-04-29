@@ -498,7 +498,7 @@ export interface ApiSadGotchuSadGotchu extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     stage: Attribute.String;
-    ageprogress: Attribute.Float;
+    lastInteractionTime: Attribute.BigInteger;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
