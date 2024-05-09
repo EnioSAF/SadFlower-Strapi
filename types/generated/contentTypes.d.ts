@@ -484,7 +484,7 @@ export interface ApiSadGotchuSadGotchu extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    age: Attribute.BigInteger;
+    age: Attribute.Decimal;
     evolutionLine: Attribute.String;
     hunger: Attribute.BigInteger;
     happiness: Attribute.BigInteger;

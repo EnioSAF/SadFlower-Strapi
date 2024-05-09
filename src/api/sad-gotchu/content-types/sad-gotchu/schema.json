@@ -16,7 +16,7 @@
       "type": "string"
     },
     "age": {
-      "type": "biginteger"
+      "type": "decimal"
     },
     "evolutionLine": {
       "type": "string"
