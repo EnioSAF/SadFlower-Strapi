@@ -112,3 +112,24 @@ exports
 dist
 build
 .strapi-updater.json
+
+############################
+# AI / agent tooling
+############################
+
+.agents/
+.codex/
+.claude/
+.cursor/
+.windsurf/
+.continue/
+.aider*
+.roo/
+.cline/
+.kilocode/
+.gemini/
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.vscode/sessions.json
+session-*.md
