@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "work_requests",
+  "info": {
+    "singularName": "work-request",
+    "pluralName": "work-requests",
+    "displayName": "MyWork requests",
+    "description": "Demandes de réservation et devis reçues depuis MyWork.exe"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "publicId": { "type": "string", "required": true, "unique": true, "private": true },
+    "kind": { "type": "enumeration", "enum": ["booking", "quote"], "required": true, "private": true },
+    "serviceCode": { "type": "string", "required": true, "maxLength": 80, "private": true },
+    "serviceCategory": { "type": "enumeration", "enum": ["developer", "musician"], "required": true, "private": true },
+    "serviceLabel": { "type": "string", "required": true, "maxLength": 120, "private": true },
+    "name": { "type": "string", "required": true, "maxLength": 100, "private": true },
+    "email": { "type": "email", "required": true, "maxLength": 254, "private": true },
+    "phone": { "type": "string", "maxLength": 30, "private": true },
+    "preferredDate": { "type": "datetime", "private": true },
+    "message": { "type": "text", "private": true },
+    "consentAt": { "type": "datetime", "required": true, "private": true },
+    "status": { "type": "enumeration", "enum": ["new", "in_review", "contacted", "closed", "spam"], "default": "new", "required": true, "private": true },
+    "source": { "type": "enumeration", "enum": ["mywork"], "default": "mywork", "required": true, "private": true },
+    "internalNotes": { "type": "text", "private": true },
+    "idempotencyKeyHash": { "type": "string", "unique": true, "private": true },
+    "payloadHash": { "type": "string", "private": true },
+    "ipHash": { "type": "string", "private": true },
+    "emailHash": { "type": "string", "private": true },
+    "userAgent": { "type": "string", "maxLength": 512, "private": true }
+  }
+}
