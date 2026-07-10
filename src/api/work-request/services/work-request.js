@@ -103,9 +103,10 @@ async function submit({ strapi, ctx }) {
 
   const now = new Date();
   const publicId = crypto.randomUUID();
+  const { consent, ...persistedData } = validation.data;
   await documents.create({
     data: {
-      ...validation.data,
+      ...persistedData,
       publicId,
       consentAt: now.toISOString(),
       status: 'new',

@@ -1,6 +1,7 @@
 'use strict';
 
 const { submit } = require('../services/work-request');
+const { createCoreController } = require('@strapi/strapi').factories;
 
 function errorResponse(error) {
   const status = error.status || 500;
@@ -13,7 +14,7 @@ function errorResponse(error) {
   };
 }
 
-module.exports = {
+module.exports = createCoreController('api::work-request.work-request', ({ strapi }) => ({
   async create(ctx) {
     try {
       const result = await submit({ strapi, ctx });
@@ -27,4 +28,4 @@ module.exports = {
       ctx.body = { error: response };
     }
   },
-};
+}));
