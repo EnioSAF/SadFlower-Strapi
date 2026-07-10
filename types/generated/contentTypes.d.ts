@@ -589,6 +589,100 @@ export interface ApiSadGotchuSadGotchu extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiWorkRequestWorkRequest extends Struct.CollectionTypeSchema {
+  collectionName: 'work_requests';
+  info: {
+    description: 'Demandes de r\u00E9servation et devis re\u00E7ues depuis MyWork.exe';
+    displayName: 'MyWork requests';
+    pluralName: 'work-requests';
+    singularName: 'work-request';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    consentAt: Schema.Attribute.DateTime &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 254;
+      }>;
+    emailHash: Schema.Attribute.String & Schema.Attribute.Private;
+    idempotencyKeyHash: Schema.Attribute.String &
+      Schema.Attribute.Private &
+      Schema.Attribute.Unique;
+    internalNotes: Schema.Attribute.Text & Schema.Attribute.Private;
+    ipHash: Schema.Attribute.String & Schema.Attribute.Private;
+    kind: Schema.Attribute.Enumeration<['booking', 'quote']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::work-request.work-request'
+    > &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.Text & Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    payloadHash: Schema.Attribute.String & Schema.Attribute.Private;
+    phone: Schema.Attribute.String &
+      Schema.Attribute.Private &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 30;
+      }>;
+    preferredDate: Schema.Attribute.DateTime & Schema.Attribute.Private;
+    publicId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private &
+      Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    serviceCategory: Schema.Attribute.Enumeration<['developer', 'musician']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    serviceCode: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 80;
+      }>;
+    serviceLabel: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
+    source: Schema.Attribute.Enumeration<['mywork']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private &
+      Schema.Attribute.DefaultTo<'mywork'>;
+    status: Schema.Attribute.Enumeration<
+      ['new', 'in_review', 'contacted', 'closed', 'spam']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private &
+      Schema.Attribute.DefaultTo<'new'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    userAgent: Schema.Attribute.String &
+      Schema.Attribute.Private &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 512;
+      }>;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1107,6 +1201,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::blog.blog': ApiBlogBlog;
       'api::sad-gotchu.sad-gotchu': ApiSadGotchuSadGotchu;
+      'api::work-request.work-request': ApiWorkRequestWorkRequest;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
