@@ -2,7 +2,7 @@
 
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { notificationRecipients, emailText } = require('../../src/api/work-request/services/notification-email');
+const { notificationRecipients, adminRequestUrl, emailText } = require('../../src/api/work-request/services/notification-email');
 
 test('lit les destinataires et copies depuis les variables MyWork', () => {
   assert.deepEqual(notificationRecipients({
@@ -21,4 +21,12 @@ test('construit un résumé complet sans HTML', () => {
   assert.match(text, /Identifiant : request-1/);
   assert.match(text, /Message : Bonjour/);
   assert.match(text, /Téléphone : Non renseigné/);
+});
+
+test('construit le lien direct vers une demande Strapi', () => {
+  const request = { documentId: 'abc123' };
+  assert.equal(
+    adminRequestUrl(request, { MYWORK_ADMIN_URL: 'https://sadflower-backend.herokuapp.com/admin/' }),
+    'https://sadflower-backend.herokuapp.com/admin/content-manager/collection-types/api%3A%3Awork-request.work-request/abc123'
+  );
 });

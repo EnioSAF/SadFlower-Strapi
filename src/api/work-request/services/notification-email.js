@@ -16,8 +16,15 @@ function notificationRecipients(env = process.env) {
   };
 }
 
-function emailText(request) {
-  return [
+function adminRequestUrl(request, env = process.env) {
+  if (!env.MYWORK_ADMIN_URL || !request.documentId) return null;
+  const baseUrl = env.MYWORK_ADMIN_URL.replace(/\/$/, '');
+  const uid = encodeURIComponent('api::work-request.work-request');
+  return `${baseUrl}/content-manager/collection-types/${uid}/${encodeURIComponent(request.documentId)}`;
+}
+
+function emailText(request, env = process.env) {
+  const lines = [
     'Nouvelle demande MyWork.exe',
     '',
     `Identifiant : ${request.publicId}`,
@@ -30,7 +37,10 @@ function emailText(request) {
     `Date souhaitée : ${request.preferredDate || 'Non renseignée'}`,
     `Message : ${request.message || 'Non renseigné'}`,
     `Consentement reçu le : ${request.consentAt}`,
-  ].join('\n');
+  ];
+  const adminUrl = adminRequestUrl(request, env);
+  if (adminUrl) lines.push('', `Ouvrir dans Strapi : ${adminUrl}`);
+  return lines.join('\n');
 }
 
 async function sendNewRequestNotification({ strapi, request, env = process.env }) {
@@ -56,9 +66,9 @@ async function sendNewRequestNotification({ strapi, request, env = process.env }
     cc: recipients.cc.length ? recipients.cc : undefined,
     replyTo: request.email,
     subject: `[MyWork] ${request.kind} — ${request.serviceLabel} — ${request.name}`,
-    text: emailText(request),
+    text: emailText(request, env),
   });
   return true;
 }
 
-module.exports = { notificationRecipients, emailText, sendNewRequestNotification };
+module.exports = { notificationRecipients, adminRequestUrl, emailText, sendNewRequestNotification };
