@@ -16,6 +16,7 @@
     "@strapi/provider-upload-aws-s3": "5.50.1",
     "@strapi/strapi": "5.50.1",
     "better-sqlite3": "12.8.0",
+    "nodemailer": "^6.10.1",
     "pg": "^8.11.3",
     "pg-connection-string": "^2.6.2",
     "react": "^18.0.0",

@@ -22,7 +22,7 @@
     "preferredDate": { "type": "datetime", "private": true },
     "message": { "type": "text", "private": true },
     "consentAt": { "type": "datetime", "required": true, "private": true },
-    "status": { "type": "enumeration", "enum": ["new", "in_review", "contacted", "closed", "spam"], "default": "new", "required": true, "private": true },
+    "requestStatus": { "type": "enumeration", "enum": ["new", "in_review", "contacted", "closed", "spam"], "default": "new", "required": true, "private": true },
     "source": { "type": "enumeration", "enum": ["mywork"], "default": "mywork", "required": true, "private": true },
     "internalNotes": { "type": "text", "private": true },
     "idempotencyKeyHash": { "type": "string", "unique": true, "private": true },

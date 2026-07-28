@@ -3,6 +3,7 @@
 const crypto = require('node:crypto');
 const { validateRequest } = require('./request-validation');
 const { createRateLimiter } = require('./rate-limit');
+const { sendNewRequestNotification } = require('./notification-email');
 
 const UID = 'api::work-request.work-request';
 const MAX_BODY_SIZE = 16 * 1024;
@@ -104,12 +105,12 @@ async function submit({ strapi, ctx }) {
   const now = new Date();
   const publicId = crypto.randomUUID();
   const { consent, ...persistedData } = validation.data;
-  await documents.create({
+  const request = await documents.create({
     data: {
       ...persistedData,
       publicId,
       consentAt: now.toISOString(),
-      status: 'new',
+      requestStatus: 'new',
       source: 'mywork',
       idempotencyKeyHash,
       payloadHash,
@@ -118,6 +119,12 @@ async function submit({ strapi, ctx }) {
       userAgent: String(ctx.get('User-Agent') || '').slice(0, 512),
     },
   });
+
+  try {
+    await sendNewRequestNotification({ strapi, request });
+  } catch (error) {
+    strapi.log.error(`MyWork notification failed for ${publicId}: ${error.message}`);
+  }
 
   return { status: 201, data: publicResponse(publicId, now) };
 }
